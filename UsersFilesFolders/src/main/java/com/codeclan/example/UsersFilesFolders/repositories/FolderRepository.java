@@ -1,4 +1,7 @@
 package com.codeclan.example.UsersFilesFolders.repositories;
 
-public class FolderRepository {
+import com.codeclan.example.UsersFilesFolders.models.Folder;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface FolderRepository extends JpaRepository<Folder, Long> {
 }
