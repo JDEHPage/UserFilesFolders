@@ -1,7 +1,9 @@
 package com.codeclan.example.UsersFilesFolders;
 
+import com.codeclan.example.UsersFilesFolders.models.Files;
 import com.codeclan.example.UsersFilesFolders.models.Folder;
 import com.codeclan.example.UsersFilesFolders.models.User;
+import com.codeclan.example.UsersFilesFolders.repositories.FilesRepository;
 import com.codeclan.example.UsersFilesFolders.repositories.FolderRepository;
 import com.codeclan.example.UsersFilesFolders.repositories.UserRepository;
 import org.junit.Test;
@@ -20,15 +22,21 @@ public class UsersFilesFoldersApplicationTests {
 	@Autowired
 	FolderRepository folderRepository;
 
+	@Autowired
+	FilesRepository filesRepository;
+
 	@Test
 	public void contextLoads() {
 	}
 
 	@Test
-	public void CreateUserAndFolder() {
+	public void CreateUserAndFolderAndFiles() {
 		User user = new User("Winston");
 		userRepository.save(user);
 		Folder folder = new Folder("Important Stuff", user);
 		folderRepository.save(folder);
+		Files file = new Files("Important", ".doc", 2, folder);
+		filesRepository.save(file);
+
 	}
 }

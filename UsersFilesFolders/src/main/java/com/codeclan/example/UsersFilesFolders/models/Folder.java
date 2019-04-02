@@ -1,8 +1,10 @@
 package com.codeclan.example.UsersFilesFolders.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "folders")
@@ -19,6 +21,10 @@ public class Folder {
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "folder", fetch = FetchType.LAZY)
+    private List<Files> files;
 
     public Folder(String title, User user) {
         this.title = title;
@@ -50,5 +56,13 @@ public class Folder {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public List<Files> getFiles() {
+        return files;
+    }
+
+    public void setFiles(List<Files> files) {
+        this.files = files;
     }
 }
