@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -29,6 +30,7 @@ public class Folder {
     public Folder(String title, User user) {
         this.title = title;
         this.user = user;
+        this.files = new ArrayList<Files>();
     }
 
     public Folder() {
@@ -62,7 +64,7 @@ public class Folder {
         return files;
     }
 
-    public void setFiles(List<Files> files) {
-        this.files = files;
+    public void addFiles(Files files) {
+        this.files.add(files);
     }
 }

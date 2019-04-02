@@ -3,6 +3,7 @@ package com.codeclan.example.UsersFilesFolders.models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -22,6 +23,7 @@ public class User {
 
     public User(String name) {
         this.name = name;
+        this.folders = new ArrayList<Folder>();
     }
 
     public User() {
@@ -47,7 +49,7 @@ public class User {
         return folders;
     }
 
-    public void setFolders(List<Folder> folders) {
-        this.folders = folders;
+    public void addFolders(Folder folder){
+        this.folders.add(folder);
     }
 }
